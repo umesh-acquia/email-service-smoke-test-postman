@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "c13bb5d1-5a01-4071-ab79-75c5a0f5ccf3",
+    "name": "SmokeTest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "3dad533b-ded8-420a-b955-3b6f52e2fa2f",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Dynamo DB Health check\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(pm.variables.get(\"a\")).to.eql(\"1\");",
+              "    pm.expect(jsonData.dynamoDbHealthEntry.status).to.eql('RUNNING');",
+              "    pm.expect(pm.environment.get(\"env1\")).to.eql(\"e\");",
+              "    pm.expect(jsonData.dynamoDbHealthEntry.statusDescription).to.eql('Success');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "type": "text",
+            "value": "JX2JOq3fjC5gHT2O0AlHC2rldaRnBh195WQLc6xd"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{url}}/dev/clients/emailconfig/health",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "dev",
+            "clients",
+            "emailconfig",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "802ff543-3126-46fb-83b8-d89dd0bd21cd",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "ff70d0e2-18aa-49c8-b243-d7c304631d12",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "aed00cf7-7d38-43b9-b748-f882c171d0fd",
+      "key": "a",
+      "value": "1",
+      "type": "string"
+    }
+  ]
+}
