@@ -15,7 +15,7 @@ newman.run({
           "enabled": true
         },
         {
-          "key": "env1",
+          "key": "xApiKey",
           "value": process.argv.slice(2)[0],
           "type": "text",
           "description": "",
@@ -38,6 +38,6 @@ newman.run({
 
   }
   else {
-    console.log(summary.run.failures);
+    console.log("Api Test completed successfully...");
   }
 });

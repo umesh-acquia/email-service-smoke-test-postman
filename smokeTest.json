@@ -20,7 +20,6 @@
               "    var jsonData = pm.response.json();",
               "    pm.expect(pm.variables.get(\"a\")).to.eql(\"1\");",
               "    pm.expect(jsonData.dynamoDbHealthEntry.status).to.eql('RUNNING');",
-              "    pm.expect(pm.environment.get(\"env1\")).to.eql(\"e\");",
               "    pm.expect(jsonData.dynamoDbHealthEntry.statusDescription).to.eql('Success');",
               "});"
             ],
@@ -41,7 +40,7 @@
           {
             "key": "x-api-key",
             "type": "text",
-            "value": "JX2JOq3fjC5gHT2O0AlHC2rldaRnBh195WQLc6xd"
+            "value": "{{xApiKey}}"
           }
         ],
         "body": {
